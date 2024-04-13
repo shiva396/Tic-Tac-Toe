@@ -16,7 +16,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: bgColor),
+      color: Color.fromRGBO(26, 30, 35, 0),
+      theme: ThemeData.dark()
+          .copyWith(scaffoldBackgroundColor: bgColor, backgroundColor: bgColor),
       routes: {
         MainScreen.routeName: (context) => const MainScreen(),
         JoinRoom.routeName: (context) => const JoinRoom(),
