@@ -12,8 +12,6 @@ var io = require("socket.io")(server);
 //middleware
 app.use(express.json());
 
-const DB =
-  "mongodb+srv://cybershiva:Mongo%40123@cluster0.5qf4rbt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 io.on("connection", (socket) => {
   console.log("Connected io");
