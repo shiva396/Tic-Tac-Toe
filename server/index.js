@@ -13,7 +13,14 @@ var io = require("socket.io")(server);
 app.use(express.json());
 
 const DB =
-  "mongodb+srv://cybershiva:Mongo@123@cluster0.5qf4rbt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://cybershiva:Mongo%40123@cluster0.5qf4rbt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+io.on("connection", (socket) => {
+  console.log("Connected io");
+  socket.on("createRoom", ({ nickname }) => {
+    console.log(nickname);
+  });
+});
 
 mongoose
   .connect(DB)
@@ -23,6 +30,7 @@ mongoose
   .catch((e) => {
     console.log(e);
   });
+
 //promise in js == Future in dart
 
 server.listen(port, "0.0.0.0", () => {

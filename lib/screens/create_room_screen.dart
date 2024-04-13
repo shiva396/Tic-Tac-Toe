@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tictactoe/resources/socket_methods.dart';
 import 'package:tictactoe/responsive/responsive.dart';
 import 'package:tictactoe/widgets/custom_button.dart';
 import 'package:tictactoe/widgets/custom_text.dart';
@@ -14,6 +15,7 @@ class CreateRoom extends StatefulWidget {
 
 class _CreateRoomState extends State<CreateRoom> {
   final TextEditingController _nameController = TextEditingController();
+  final SocketMethods _socketMethods = SocketMethods();
 
   @override
   void dispose() {
@@ -32,7 +34,7 @@ class _CreateRoomState extends State<CreateRoom> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              CustomText(shadows: [
+              const CustomText(shadows: [
                 Shadow(
                   blurRadius: 40,
                   color: Colors.blue,
@@ -46,7 +48,12 @@ class _CreateRoomState extends State<CreateRoom> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              CustomButton(onTap: () {}, text: "Create"),
+              CustomButton(
+                  onTap: () {
+                    _socketMethods.createRoom(_nameController.text);
+                    // print(_nameController.text);
+                  },
+                  text: "Create"),
             ],
           ),
         ),
